@@ -18,8 +18,10 @@ def best_path(pairs_distances, metric_function):
 test_distances = {('London', 'Dublin'): 464, ('London', 'Belfast'): 518, ('Dublin', 'Belfast'): 141}
 assert best_path(test_distances, min) == 605
 
-matches = [re.match(r'(\w+) to (\w+) = (\d+)', line).groups(1) for line in open('9.txt')]
-distances = {(origin, destination): int(distance) for origin, destination, distance in matches}
+matches = [re.match(r'(\w+) to (\w+) = (\d+)', line).groups(1)
+		   for line in open('9.txt')]
+distances = {(origin, destination): int(distance)
+			 for origin, destination, distance in matches}
 print('Shortest distance:', best_path(distances, min))
 
 assert best_path(test_distances, max) == 982
